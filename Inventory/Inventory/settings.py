@@ -89,7 +89,7 @@ else:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': 'myinventory_db',
+            'NAME': 'myinventory_db2',
             'USER': 'ait0ne',
             'PASSWORD': 'db_fib112358',
             'HOST': 'localhost',
