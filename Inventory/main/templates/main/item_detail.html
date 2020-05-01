@@ -1,0 +1,42 @@
+{% extends "main/base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+    <div class="container row">
+        <div class="col content-section content-margin content-hide">
+            <img class="card-img" style="object-fit:cover" src="{{item.image.url}}">
+                    <a target="_blank" rel="noopener noreferrer" class=" btn-avito" href="https://www.avito.ru/additem"}><img class="img-avito" src="{% static 'main/avito.svg' %}"> </a>
+                    <a target="_blank" rel="noopener noreferrer" class=" btn-avito" href="https://youla.ru/product/create"}><img class="img-avito" src="{% static 'main/youla.svg' %}"> </a>
+        </div>
+        <div  class="col content-section content-margin" >
+            <form class="p-4" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <fieldset class="form-group">
+                    <legend class="border-bottom mb-4 font-special-elite">{{ item.title}}
+                    <a class="btn-previous" href="{% url 'main-home'%} "}><i class="fa fa-chevron-left"></i></a>
+                    </legend>
+                    {{ form|crispy }}
+                </fieldset>
+                <div class="form-group">
+                    <button class="btn mybtn btn-outline-info" type="submit">Update</button>
+                    <a class="btn mybtn btn-outline-info ml-2" href="{% url 'item-delete' item.id %} "}>Delete</a>
+                </div>
+            </form>
+        </div>
+
+        <div class="container content-show">
+            <div class="col-12">
+                <a class="text-dark font-special-elite" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                    Post item to a marketplace
+                    <i class="fa fa-caret-down"></i>
+                </a>
+            </div>
+
+        </div>
+        <div class="collapse row ml-5" id="collapseExample">
+            <a target="_blank" rel="noopener noreferrer" class=" btn-avito" href="https://www.avito.ru/additem"}><img class="img-avito" src="{% static 'main/avito.svg' %}"> </a>
+            <a target="_blank" rel="noopener noreferrer" class=" btn-avito ml-5" href="https://youla.ru/product/create"}><img class="img-avito" src="{% static 'main/youla.svg' %}"> </a>
+        </div>
+    </div>
+{% endblock content %}

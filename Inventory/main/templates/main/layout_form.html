@@ -1,0 +1,67 @@
+{% extends "main/base.html" %}
+{% load crispy_forms_tags %}
+{% load django_tables2 %}
+{% block content %}
+    <div class="content-section mt-5" ">
+      <div class="text-white text-center py-2 px-4">
+        <div>
+          <h2 class=" h1-responsive pt-3 mb-4 font-bold"><strong>Create a Layout for your Inventory System </strong></h2>
+          <p class="mx-5 mb-2 text-secondary"> Here you can create a Layout for your Inventory System by adding different storage Locations to it!
+          </p>
+          <p class="mx-5 mb-2 text-secondary"> To delete a Location, just click on it's name in a table to the right!
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div  class="d-flex justify-content-center align-items-top">
+        <div  class="d-flex content-section align-items-center" >
+            <form  method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <fieldset class="form-group">
+                    <legend class="border-bottom mb-4">Add Location to your Layout</legend>
+                    {{ form|crispy }}
+                </fieldset>
+                <div class="form-group">
+                    <button class="btn mybtn btn-outline-info" type=""submit>Add</button>
+                </div>
+
+            </form>
+        </div>
+        <div class="content-section">
+            <div id="form_card" >
+                <form>
+                    <div class="text-right">
+                        <a class="btn-previous2" href="{% url 'main-home'%} "}><i class="fa fa-chevron-left"></i></a>
+                    </div>
+                    {% csrf_token %}
+                    {% render_table table %}
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+{% endblock content %}
+
+{% block scripts  %}
+
+
+    <script type="text/javascript">
+            $( document ).ready(function() {
+            $("#id_position_layout_0").change(function(){
+
+             if ($(this).val()=="Customary" ){
+                  $('#id_position_layout_1').show();
+              }
+             else{
+                  $('#id_position_layout_1').hide();
+             }
+        })
+        });
+
+    </script>
+
+{% endblock %}

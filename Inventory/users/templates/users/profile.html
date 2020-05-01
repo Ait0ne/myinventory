@@ -1,0 +1,29 @@
+{% extends "main/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+        <div class=" d-flex justify-content-center">
+        <div class="d-flex-row justify-content-center content-section content-margin shadow">
+<!--          <div class="media">-->
+<!--            <div class="media-body">-->
+<!--              <h2 class="account-heading">{{ user.username }}</h2>-->
+<!--              <p class="text-secondary">{{ user.email }}</p>-->
+<!--            </div>-->
+<!--          </div>-->
+          <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <div class="d-flex justify-content-between">
+                    <legend class="border-bottom mb-4 font-special-elite ">Profile Info
+                    </legend>
+                    <a class="btn-previous2" href="{% url 'main-home'%} "}><i class="fa fa-chevron-left"></i></a>
+                </div>
+                {{ u_form|crispy }}
+                {{ p_form|crispy }}
+            </fieldset>
+            <div class="form-group">
+                <button class="btn mybtn btn-outline-info" type=""submit>Update</button>
+            </div>
+          </form>
+        </div>
+            </div>
+{% endblock content %}
